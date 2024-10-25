@@ -58,6 +58,7 @@ def open_directory(file_path):
     elif os.name == 'posix':  # macOS and Linux
         subprocess.Popen(['open', directory])
 
+# Initialize the main application window
 app = ctk.CTk()
 app.title("Image Sequence to Video Maker")
 
@@ -65,12 +66,15 @@ app.title("Image Sequence to Video Maker")
 title_label = ctk.CTkLabel(app, text="Image Sequence to Video Maker", font=("Helvetica", 16, "bold"))
 title_label.pack(pady=10)
 
+# Frame for input controls
 frame = ctk.CTkFrame(app)
 frame.pack(pady=10)
 
+# Select Images button
 select_button = ctk.CTkButton(frame, text="Select Images", command=select_images)
 select_button.pack(side="left", padx=5)
 
+# Frame Rate label and entry
 frame_rate_label = ctk.CTkLabel(frame, text="Frame Rate:")
 frame_rate_label.pack(side="left", padx=5)
 
@@ -78,9 +82,11 @@ frame_rate_entry = ctk.CTkEntry(frame)
 frame_rate_entry.insert(0, "30")  # Set default frame rate to 30
 frame_rate_entry.pack(side="left", padx=5)
 
+# Create Video button
 create_button = ctk.CTkButton(frame, text="Create Video", command=create_video)
 create_button.pack(side="left", padx=5)
 
+# Progress bar
 progress_bar = ctk.CTkProgressBar(app, width=400)
 progress_bar.set(0)  # Ensure the progress bar starts with no progress
 progress_bar.pack(pady=10)
@@ -91,4 +97,5 @@ status_var.set("Select images to create a video.")
 status_bar = ctk.CTkLabel(app, textvariable=status_var, anchor="w")
 status_bar.pack(side="bottom", fill="x", padx=10, pady=10)  # Add more padding around the status bar
 
+# Start the main event loop
 app.mainloop()
